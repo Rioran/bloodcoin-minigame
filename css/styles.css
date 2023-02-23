@@ -6,7 +6,7 @@
 body {
     height: 100vh;
     background-color: rgb(220, 86, 86);
-    display: flex;
+		display: flex;
     justify-content: center;
-    align-items: center;
+		align-items: center;
 }
