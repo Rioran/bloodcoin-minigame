@@ -1,27 +1,31 @@
-
-class Hero extends Creature {
-    constructor(sprite) {
-        super(sprite);
-        this.sprite.x = HERO_INI_X_OFFSET;
-        this.sprite.y = HERO_INI_Y_OFFSET;
-        this.speed_y = HERO_INI_Y_SPEED;
-        this.speed_x = 0;
-        this.status = 'hero';
-        this.sprite.eventMode = 'dynamic';
-        this.sprite.cursor = 'pointer';
-        //this.sprite.on('pointerdown', hero_click);
+class Hero extends Entity {
+    constructor() {
+        super('hero');
+        this.status = 'alive';
     }
-    check_collision(entity) {
-        if (entity == null) {return;}
-        if (entity.status == 'hero') {return;}
-        const check = this.sprite.x < entity.sprite.x + HERO_WIDTH
+    is_collision(entity) {
+        return this.sprite.x < entity.sprite.x + HERO_WIDTH
             && this.sprite.x > entity.sprite.x - HERO_WIDTH
             && this.sprite.y < entity.sprite.y + HERO_HEIGHT
             && this.sprite.y > entity.sprite.y - HERO_HEIGHT
-        if (check) {
-            console.log('oops, collision!');
+    }
+    check_collision(entity) {
+        if (entity == null) {return;}
+        if (this.is_collision(entity)) {
+            this.status = 'dead';
+            render_game_over();
             app.ticker.stop();
-            //this.self_destruction();
         }
     }
+    check_coin_collision(entity) {
+        if (entity == null) {return false;}
+        if (this.is_collision(entity)) {return true;}
+        return false;
+    }
+}
+
+let hero = new Hero();
+
+function hero_click() {
+    hero.must_jump = true;
 }
