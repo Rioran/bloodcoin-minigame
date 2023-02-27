@@ -45,9 +45,9 @@ class Entity {
         this.marked_for_deletion = true;
     }
     check_stage_relevance() {
-        if (this.sprite.x + HERO_WIDTH < 0) {this.mark_for_destruction(); return;}
+        if (this.sprite.x + this.sprite.width < 0) {this.mark_for_destruction(); return;}
         if (this.sprite.x > APP_WIDTH) {this.mark_for_destruction(); return;}
-        if (this.sprite.y + HERO_HEIGHT < 0) {this.mark_for_destruction(); return;}
+        if (this.sprite.y + this.sprite.height < 0) {this.mark_for_destruction(); return;}
         if (this.sprite.y > APP_HEIGHT) {this.mark_for_destruction(); return;}
     }
     update() {

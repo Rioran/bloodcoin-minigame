@@ -4,6 +4,7 @@ class Coin extends Entity {
     constructor() {
         super('coin');
         this.sprite.y += Math.random() * COIN_RANDOM_Y_SHIFT;
+        this.sprite.pivot.set(this.sprite.width / 2, this.sprite.height / 2);
     }
     move_by_y() {
         return;

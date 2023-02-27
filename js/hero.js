@@ -4,10 +4,10 @@ class Hero extends Entity {
         this.status = 'alive';
     }
     is_collision(entity) {
-        return this.sprite.x < entity.sprite.x + HERO_WIDTH
-            && this.sprite.x > entity.sprite.x - HERO_WIDTH
-            && this.sprite.y < entity.sprite.y + HERO_HEIGHT
-            && this.sprite.y > entity.sprite.y - HERO_HEIGHT
+        return this.sprite.x < entity.sprite.x + entity.sprite.width
+            && this.sprite.x > entity.sprite.x - this.sprite.width
+            && this.sprite.y < entity.sprite.y + entity.sprite.height
+            && this.sprite.y > entity.sprite.y - this.sprite.height
     }
     check_collision(entity) {
         if (entity == null) {return;}
