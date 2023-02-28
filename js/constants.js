@@ -33,7 +33,7 @@ const HEROES = {
     'nata': 'I\'m a bird, mtfr, I\'m a bird! Tapping while\nin a mid-air activates gliding.',
     'german': 'Skillfull axe wielder - death from above!\nChops enemies while falling down.',
     'lena': 'Dragon, but without all that wings and scales staff.\nTap in mid-air to use scores as projectiles.',
-    'ed': 'Fiersome dovakin. Tap while jumping up to\ntake a huge breath for a devastating shout.',
+    'screamer': 'Fiersome dovakin. Tap while jumping up to\ntake a huge breath for a devastating shout.',
     'dan': 'Blood shaman of a forsaken godly figure.\nMid-air taps activate random buffs.',
 };
 
@@ -43,7 +43,7 @@ const TEXTURES = {
     'hero_nata': PIXI.Texture.from('images/hero_nata.jpg'),
     'hero_german': PIXI.Texture.from('images/hero_german.jpg'),
     'hero_lena': PIXI.Texture.from('images/hero_lena.jpg'),
-    'hero_ed': PIXI.Texture.from('images/hero_ed.jpg'),
+    'hero_screamer': PIXI.Texture.from('images/hero_screamer.jpg'),
     'hero_dan': PIXI.Texture.from('images/hero_dan.jpg'),
     'crawler': PIXI.Texture.from('images/mob_crawler.jpg'),
     'coin': PIXI.Texture.from('images/item_blood_coin.jpg'),
