@@ -1,3 +1,5 @@
+let hero;
+
 class Hero extends Entity {
     constructor() {
         super('hero');
@@ -24,7 +26,9 @@ class Hero extends Entity {
     }
 }
 
-let hero = new Hero();
+function create_hero() {
+    hero = new Hero();
+}
 
 function hero_click() {
     hero.must_jump = true;

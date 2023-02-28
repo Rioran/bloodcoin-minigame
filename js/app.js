@@ -7,14 +7,7 @@ let app = new PIXI.Application({
 });
 app.ticker.maxFPS = APP_MAX_FPS;
 
-app.renderer.view.addEventListener('pointerdown', hero_click);
-
 load_interfaces();
-
-app.stage.addChild(score_text);
-app.stage.addChild(help_text);
-app.stage.addChild(hero.sprite);
-app.stage.addChild(start_game_sprite);
 
 document.body.appendChild(app.view);
 
