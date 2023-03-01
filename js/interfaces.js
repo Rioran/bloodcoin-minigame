@@ -70,9 +70,10 @@ function load_interfaces() {
     start_game_background.eventMode = 'dynamic';
     start_game_background.cursor = 'pointer';
     start_game_background.addEventListener('pointerdown', (e) => {
+        const hero_name = start_game_header.text;
         start_game_screen.parent.removeChild(start_game_screen);
         start_game_screen.destroy({children:true, texture:false, baseTexture:false});
-        create_hero();
+        create_hero(hero_name);
         app.stage.addChild(score_text);
         app.stage.addChild(help_text);
         app.stage.addChild(hero.sprite);

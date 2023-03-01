@@ -5,6 +5,7 @@ const APP_MAX_FPS = 30;
 
 const FALL_ACCELERATION = 1;
 const JUMP_SPEED = -20;
+const GLIDING_FALL_SPEED = 1;
 
 const HERO_WIDTH = 60;
 const HERO_HEIGHT = 120;

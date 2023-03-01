@@ -16,6 +16,8 @@ function update_crawlers() {
             hero.check_collision(crawler);
         } else {
             increment_score();
+            app.stage.removeChild(crawler.sprite);
+            crawler.sprite.destroy();
             delete crawlers[i];
         }
     }

@@ -7,6 +7,8 @@ class Entity {
         this.marked_for_deletion = false;
     }
     apply_ini_parameters(entity_key) {
+        const check = entity_key.split('_')[1];
+        if (check in HEROES) {entity_key = 'hero';}
         const params = INI_PARAMETERS[entity_key];
         this.sprite.x = params['x'];
         this.sprite.y = params['y'];
@@ -24,8 +26,8 @@ class Entity {
             this.sprite.y += this.speed_y;
             return;
         }
-        if (this.sprite.y > HERO_FLOOR_Y) {
-            this.sprite.y = HERO_FLOOR_Y;
+        if (this.sprite.y + this.sprite.height >= APP_HEIGHT) {
+            this.sprite.y = APP_HEIGHT - this.sprite.height;
             this.speed_y = 0;
             return;
         }
@@ -43,6 +45,7 @@ class Entity {
     }
     mark_for_destruction() {
         this.marked_for_deletion = true;
+        this.sprite.x = -this.sprite.width;
     }
     check_stage_relevance() {
         if (this.sprite.x + this.sprite.width < 0) {this.mark_for_destruction(); return;}
