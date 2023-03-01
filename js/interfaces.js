@@ -7,8 +7,8 @@ let start_game_screen;
 let start_game_header;
 let start_game_footer;
 
-function increment_score() {
-    score_value += 1;
+function increment_score(value = 1) {
+    score_value += value;
     score_text.text = 'Score: ' + score_value;
 }
 

@@ -40,11 +40,19 @@ function create_hero(hero_name) {
         hero = new Screamer();
         return;
     }
+    if (hero_name == 'lena') {
+        hero = new Lena();
+        return;
+    }
     hero = new Hero();
 }
 
 function hero_click() {
     hero.must_jump = true;
+}
+
+function lena_click() {
+    hero.fire();
 }
 
 function update_hero_projectiles() {
@@ -63,8 +71,53 @@ function update_hero_projectiles() {
     hero_projectiles = new_hero_projectiles;
 }
 
+class Lena_Fireball extends Entity {
+    constructor(ini_y = HERO_FLOOR_Y) {
+        super('coin');
+        this.rotation_speed *= 1.7;
+        this.sprite.y += Math.random() * COIN_RANDOM_Y_SHIFT;
+        this.sprite.pivot.set(this.sprite.width / 2, this.sprite.height / 2);
+        this.sprite.y = ini_y + HERO_HEIGHT / 2 - this.sprite.height / 2;
+        this.sprite.x = 40;
+        this.speed_x *= -1;
+    }
+    move_by_y() {
+        return;
+    }
+    is_collision(entity) {
+        return this.sprite.x < entity.sprite.x + entity.sprite.width
+            && this.sprite.x > entity.sprite.x - this.sprite.width
+            && this.sprite.y < entity.sprite.y + entity.sprite.height
+            && this.sprite.y > entity.sprite.y - this.sprite.height
+    }
+    iterate_victims(victims) {
+        for (const [i, victim] of victims.entries()) {
+            if (!this.is_collision(victim)) {return;}
+            victim.mark_for_destruction();
+            this.mark_for_destruction();
+            increment_score();
+        }
+    }
+}
+
+class Lena extends Hero {
+    constructor() {
+        super('hero_lena');
+        this.sprite.eventMode = 'dynamic';
+        this.sprite.cursor = 'pointer';
+        this.sprite.addEventListener('pointerdown', lena_click);
+    }
+    fire() {
+        increment_score(-1);
+        this.must_jump = false;
+        let fireball = new Lena_Fireball(this.sprite.y);
+        app.stage.addChild(fireball.sprite);
+        hero_projectiles.push(fireball);
+    }
+}
+
 class Screamer_Shout extends Entity {
-    constructor(ini_y = HERO_HEIGHT) {
+    constructor(ini_y = HERO_FLOOR_Y) {
         super('screamer_shout');
         this.sprite.scale.x /= this.sprite.width / HERO_WIDTH;
         this.sprite.y = ini_y;
