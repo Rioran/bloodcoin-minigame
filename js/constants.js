@@ -62,7 +62,6 @@ const TEXTURES = {
     'screamer_shout': PIXI.Texture.from('images/item_screamer_projectile.jpg'),
     'bullet': PIXI.Texture.from('images/item_crawler_projectile.jpg'),
     'new_game': PIXI.Texture.from('images/button_new_game.jpg'),
-    'start': PIXI.Texture.from('images/button_start.jpg'),
 };
 
 const INI_PARAMETERS = {
