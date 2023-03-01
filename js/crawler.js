@@ -13,7 +13,9 @@ function update_crawlers() {
         crawler.update();
         if(!crawler.marked_for_deletion) {
             new_crawlers.push(crawler);
-            hero.check_collision(crawler);
+            if (!hero.is_immune) {
+                hero.check_collision(crawler);
+            }
         } else {
             increment_score();
             app.stage.removeChild(crawler.sprite);

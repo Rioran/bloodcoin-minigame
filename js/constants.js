@@ -11,6 +11,8 @@ const HERO_WIDTH = 60;
 const HERO_HEIGHT = 120;
 const HERO_FLOOR_Y = APP_HEIGHT - HERO_HEIGHT;
 const SCREAMER_PROJECTILE_SPEED = 39;
+const DAN_COOLDOWN = 300;
+const DAN_SKILL_DURATION = 240;
 
 const CRAWLER_SPAWN_COOLDOWN = 75; // 60 = 1 second
 const CRAWLER_SPAWN_RANDOM_DURATION = 105;
@@ -34,9 +36,9 @@ const HEROES = {
     'roman': 'Just a simplton with no redeeming qualities.',
     'nata': 'I\'m a bird, mtfr, I\'m a bird! Tapping while\nin a mid-air activates gliding.',
     'german': 'Skillfull axe wielder - death from above!\nChops enemies while falling down.',
-    'lena': 'Dragon, but without all that wings and scales staff.\nTap in mid-air to use scores as projectiles.',
+    'lena': 'Dragon, but without all that wings and scales staff.\nTap avatar to use scores as projectiles.',
     'screamer': 'Fiersome dovakin. Tap while jumping down to\nperform a devastating shout.',
-    'dan': 'Blood shaman of a forsaken godly figure.\nMid-air taps activate random buffs.',
+    'dan': 'Blood shaman of a forsaken godly figure.\nAvatar taps activate shadow immunity.\n4s duration + 1s cooldown.',
 };
 
 const TEXTURES = {

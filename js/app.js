@@ -17,7 +17,7 @@ let tick = 0;
 function main_loop(delta) {
     tick += 1;
     elapsed += delta;
-    hero.update();
+    hero.update(elapsed);
     if (elapsed > 60) {
         update_crawlers();
         update_coins();
