@@ -22,7 +22,7 @@ function main_loop(delta) {
         update_crawlers();
         update_coins();
         update_hero_projectiles();
-        check_if_its_time_for_crawler(elapsed);
+        check_if_its_time_for_crawler(elapsed, score_value);
         check_if_its_time_for_coin(elapsed);
     }
 }

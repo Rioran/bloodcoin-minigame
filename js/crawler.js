@@ -2,8 +2,27 @@
 let crawlers = [];
 
 class Crawler extends Entity {
-    constructor() {
+    constructor(scores) {
         super('crawler');
+        if (scores >= SCORES_STAGE_1) {
+            if (Math.random() >= 0.5) {
+                this.sprite.y = 60;
+            }
+        }
+        if (scores >= SCORES_STAGE_2) {
+            if (Math.random() >= 0.5) {
+                this.speed_x -= Math.floor(Math.random() * 11);
+            }
+        }
+        if (scores >= SCORES_STAGE_3) {
+            if (Math.random() >= 0.5) {
+                this.sprite.x -= Math.floor(Math.random() * 241);
+            }
+        }
+    }
+    update() {
+        this.move_by_x();
+        this.check_stage_relevance();
     }
 }
 
@@ -26,16 +45,16 @@ function update_crawlers() {
     crawlers = new_crawlers;
 }
 
-function add_crawler() {
-    let crawler = new Crawler();
+function add_crawler(scores) {
+    let crawler = new Crawler(scores);
     app.stage.addChild(crawler.sprite);
     crawlers.push(crawler);
 }
 
-function check_if_its_time_for_crawler(time_mark) {
+function check_if_its_time_for_crawler(time_mark, scores) {
     if (CRAWLER_NEW_SPAWN_TIME < time_mark) {
-        add_crawler();
+        add_crawler(scores);
         CRAWLER_LAST_SPAWN_TIME = time_mark;
-        get_new_crawler_spawn_time();
+        get_new_crawler_spawn_time(scores);
     }
 }

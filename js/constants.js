@@ -7,6 +7,10 @@ const FALL_ACCELERATION = 1;
 const JUMP_SPEED = -20;
 const GLIDING_FALL_SPEED = 1;
 
+const SCORES_STAGE_1 = 100;
+const SCORES_STAGE_2 = 200;
+const SCORES_STAGE_3 = 300;
+
 const HERO_WIDTH = 60;
 const HERO_HEIGHT = 120;
 const HERO_FLOOR_Y = APP_HEIGHT - HERO_HEIGHT;
@@ -15,12 +19,16 @@ const DAN_COOLDOWN = 300;
 const DAN_SKILL_DURATION = 240;
 
 const CRAWLER_SPAWN_COOLDOWN = 75; // 60 = 1 second
+const CRAWLER_SPAWN_COOLDOWN_LIMIT = 15;
+const CRAWLER_SPAWN_CHANGE_SCORE_STEP = 60;
 const CRAWLER_SPAWN_RANDOM_DURATION = 105;
 let CRAWLER_LAST_SPAWN_TIME = 0; // to test against elapsed
 let CRAWLER_NEW_SPAWN_TIME = 1;
 
-function get_new_crawler_spawn_time() {
-    CRAWLER_NEW_SPAWN_TIME = CRAWLER_LAST_SPAWN_TIME + CRAWLER_SPAWN_COOLDOWN + Math.random() * CRAWLER_SPAWN_RANDOM_DURATION;
+function get_new_crawler_spawn_time(score) {
+    const delta = Math.floor(score / CRAWLER_SPAWN_CHANGE_SCORE_STEP);
+    const new_cooldown = Math.max(CRAWLER_SPAWN_COOLDOWN - delta, CRAWLER_SPAWN_COOLDOWN_LIMIT);
+    CRAWLER_NEW_SPAWN_TIME = CRAWLER_LAST_SPAWN_TIME + new_cooldown + Math.random() * CRAWLER_SPAWN_RANDOM_DURATION;
 }
 
 const COIN_SPAWN_COOLDOWN = 39; // 60 = 1 second
