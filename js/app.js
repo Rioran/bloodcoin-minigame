@@ -21,6 +21,7 @@ function main_loop(delta) {
     if (elapsed > 60) {
         update_crawlers();
         update_coins();
+        update_hero_projectiles();
         check_if_its_time_for_crawler(elapsed);
         check_if_its_time_for_coin(elapsed);
     }

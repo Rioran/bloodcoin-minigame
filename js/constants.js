@@ -10,6 +10,7 @@ const GLIDING_FALL_SPEED = 1;
 const HERO_WIDTH = 60;
 const HERO_HEIGHT = 120;
 const HERO_FLOOR_Y = APP_HEIGHT - HERO_HEIGHT;
+const SCREAMER_PROJECTILE_SPEED = 39;
 
 const CRAWLER_SPAWN_COOLDOWN = 75; // 60 = 1 second
 const CRAWLER_SPAWN_RANDOM_DURATION = 105;
@@ -34,7 +35,7 @@ const HEROES = {
     'nata': 'I\'m a bird, mtfr, I\'m a bird! Tapping while\nin a mid-air activates gliding.',
     'german': 'Skillfull axe wielder - death from above!\nChops enemies while falling down.',
     'lena': 'Dragon, but without all that wings and scales staff.\nTap in mid-air to use scores as projectiles.',
-    'screamer': 'Fiersome dovakin. Tap while jumping up to\ntake a huge breath for a devastating shout.',
+    'screamer': 'Fiersome dovakin. Tap while jumping down to\nperform a devastating shout.',
     'dan': 'Blood shaman of a forsaken godly figure.\nMid-air taps activate random buffs.',
 };
 
@@ -48,6 +49,7 @@ const TEXTURES = {
     'hero_dan': PIXI.Texture.from('images/hero_dan.jpg'),
     'crawler': PIXI.Texture.from('images/mob_crawler.jpg'),
     'coin': PIXI.Texture.from('images/item_blood_coin.jpg'),
+    'screamer_shout': PIXI.Texture.from('images/item_screamer_projectile.jpg'),
     'bullet': PIXI.Texture.from('images/item_crawler_projectile.jpg'),
     'new_game': PIXI.Texture.from('images/button_new_game.jpg'),
     'start': PIXI.Texture.from('images/button_start.jpg'),
@@ -80,5 +82,14 @@ const INI_PARAMETERS = {
         'rotation': 0,
         'rotation_speed': Math.PI/15,
         'rotation_limit': -1,
+    },
+    'screamer_shout': {
+        'x': 40,
+        'y': APP_HEIGHT - HERO_HEIGHT,
+        'speed_x': 0,
+        'speed_y': 0,
+        'rotation': 0,
+        'rotation_speed': 0,
+        'rotation_limit': 0,
     },
 };
